@@ -92,32 +92,32 @@ function createMainWindow() {
 }
 
 // single instance lock handler
-if (!singleInstance) {
-  app.quit()
-} else {
-  app.on('second-instance', (_event, argv) => {
-    if (mainWindow) {
-      if (!mainWindow.isVisible()) mainWindow.show()
-      mainWindow.focus()
-    }
+// if (!singleInstance) {
+//   app.quit()
+// } else {
+//   app.on('second-instance', (_event, argv) => {
+//     if (mainWindow) {
+//       if (!mainWindow.isVisible()) mainWindow.show()
+//       mainWindow.focus()
+//     }
 
-    if (!MAC) {
-      let urlWithBoostNoteProtocol
-      for (const arg of argv) {
-        if (/^boostnote:\/\//.test(arg)) {
-          urlWithBoostNoteProtocol = arg
-          break
-        }
-      }
-      if (urlWithBoostNoteProtocol != null && mainWindow != null) {
-        mainWindow.webContents.send(
-          'open-boostnote-url',
-          urlWithBoostNoteProtocol
-        )
-      }
-    }
-  })
-}
+//     if (!MAC) {
+//       let urlWithBoostNoteProtocol
+//       for (const arg of argv) {
+//         if (/^boostnote:\/\//.test(arg)) {
+//           urlWithBoostNoteProtocol = arg
+//           break
+//         }
+//       }
+//       if (urlWithBoostNoteProtocol != null && mainWindow != null) {
+//         mainWindow.webContents.send(
+//           'open-boostnote-url',
+//           urlWithBoostNoteProtocol
+//         )
+//       }
+//     }
+//   })
+// }
 
 // quit application when all windows are closed
 app.on('window-all-closed', () => {

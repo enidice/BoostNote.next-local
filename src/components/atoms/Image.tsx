@@ -9,9 +9,9 @@ interface ImageProps {
 }
 
 const Image = ({ src, className, style, alt }: ImageProps) => {
-  if (isElectron() && src.startsWith('/app')) {
-    src = src.slice(1)
-  }
+//  if (isElectron() && src.startsWith('/app')) {
+//    src = src.slice(1)
+//  }
 
   return <img src={src} className={className} style={style} alt={alt} />
 }
